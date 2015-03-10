@@ -13,7 +13,15 @@ angular.module('angularMvcSampleApp')
 
     DirectRepositoryService.prototype.fetch = function (user) {
       return $http.get('https://api.github.com/users/' + user + '/repos')
-        .then(function (data) { return data.data; });
+        .then(function (data) {
+          return data.data
+            .map(function (repository) {
+              return {
+                name: repository.name,
+                stars: repository.stargazers_count // jshint ignore:line
+              };
+            });
+        });
     };
 
     return DirectRepositoryService;
