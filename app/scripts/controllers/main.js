@@ -26,6 +26,17 @@ angular.module('angularMvcSampleApp')
 
     return DirectRepositoryService;
   })
+  .factory('CachedRepositoryService', function () {
+    var CachedRepositoryService = function (repositoryService) {
+      this.service_ = repositoryService;
+    };
+
+    CachedRepositoryService.prototype.fetch = function (user) {
+      return this.service_.fetch(user);
+    };
+
+    return CachedRepositoryService;
+  })
   .factory('DummyRepositoryService', function ($q) {
     var getRepositories = function (user) {
       switch (user) {
