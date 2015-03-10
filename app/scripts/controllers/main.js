@@ -40,32 +40,11 @@ angular.module('angularMvcSampleApp')
   .factory('repositoryLibrary', function (DummyRepositoryService) {
     var repositoryService = new DummyRepositoryService();
 
-    var getRepositories = function (user) {
-      switch (user) {
-      case 'GrayBullet':
-        return [
-          {name: 'generator-graybullet-cordova', stars: 6},
-          {name: 'grunt-cordova-ng', stars: 2},
-          {name: 'testmator', stars: 0}
-        ];
-
-      case 'masakura':
-        return [
-          {name: 'sample0', stars: 1},
-          {name: 'sample1'}
-        ];
-
-      default:
-        return [];
-      }
-    };
-
     return {
       userInput: '',
       repositories: [],
       fetch: function () {
         this.repositories = repositoryService.fetch(this.userInput);
-        // this.repositories = getRepositories(this.userInput);
       }
     };
   })
