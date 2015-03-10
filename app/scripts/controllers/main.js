@@ -9,10 +9,32 @@
  */
 angular.module('angularMvcSampleApp')
   .factory('repositoryLibrary', function () {
+    var getRepositories = function (user) {
+      switch (user) {
+      case 'GrayBullet':
+        return [
+          {name: 'generator-graybullet-cordova', stars: 6},
+          {name: 'grunt-cordova-ng', stars: 2},
+          {name: 'testmator', stars: 0}
+        ];
+
+      case 'masakura':
+        return [
+          {name: 'sample0', stars: 1},
+          {name: 'sample1'}
+        ];
+
+      default:
+        return [];
+      }
+    };
+
     return {
       userInput: '',
       repositories: [],
       fetch: function () {
+        this.repositories = getRepositories(this.userInput);
+        /*
         switch (this.userInput) {
         case 'GrayBullet':
           this.repositories = [
@@ -33,6 +55,7 @@ angular.module('angularMvcSampleApp')
           this.repositories = [];
           break;
         }
+         */
       }
     };
   })
