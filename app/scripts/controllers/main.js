@@ -8,6 +8,15 @@
  * Controller of the angularMvcSampleApp
  */
 angular.module('angularMvcSampleApp')
+  .factory('DirectRepositoryService', function ($http) {
+    var DirectRepositoryService = function () {};
+
+    DirectRepositoryService.prototype.fetch = function (user) {
+      return $http.get('https://api.github.com/users/' + user + '/repos');
+    };
+
+    return DirectRepositoryService;
+  })
   .factory('DummyRepositoryService', function ($q) {
     var getRepositories = function (user) {
       switch (user) {
