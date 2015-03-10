@@ -9,9 +9,13 @@
  */
 angular.module('angularMvcSampleApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.repositories = [
-      {name: 'generator-graybullet-cordova', stars: 6},
-      {name: 'grunt-cordova-ng', stars: 2},
-      {name: 'testmator', stars: 0}
-    ];
+    $scope.repositories = [];
+
+    $scope.fetch = function () {
+      $scope.repositories = [
+        {name: 'generator-graybullet-cordova', stars: 6},
+        {name: 'grunt-cordova-ng', stars: 2},
+        {name: 'testmator', stars: 0}
+      ];
+    };
   });
