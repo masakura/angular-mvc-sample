@@ -9,9 +9,9 @@
  */
 angular.module('angularMvcSampleApp')
   .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+    $scope.repositories = [
+      'generator-graybullet-cordova',
+      'grunt-cordova-ng',
+      'testmator'
     ];
   });
