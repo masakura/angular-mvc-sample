@@ -48,8 +48,8 @@ angular.module('angularMvcSampleApp')
 
     return DummyRepositoryService;
   })
-  .factory('repositoryLibrary', function (DummyRepositoryService) {
-    var repositoryService = new DummyRepositoryService();
+  .factory('repositoryLibrary', function (DirectRepositoryService) {
+    var repositoryService = new DirectRepositoryService();
 
     return {
       userInput: '',
