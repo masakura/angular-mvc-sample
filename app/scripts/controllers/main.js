@@ -35,7 +35,6 @@ angular.module('angularMvcSampleApp')
       var deferred = $q.defer();
       deferred.resolve(getRepositories(user));
       return deferred.promise;
-      // return getRepositories(user);
     };
 
     return DummyRepositoryService;
@@ -47,7 +46,6 @@ angular.module('angularMvcSampleApp')
       userInput: '',
       repositories: [],
       fetch: function () {
-        // this.repositories = repositoryService.fetch(this.userInput);
         var that = this;
         repositoryService.fetch(this.userInput)
           .then(function (repositories) { that.repositories = repositories; });
