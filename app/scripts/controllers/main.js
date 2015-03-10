@@ -8,7 +8,7 @@
  * Controller of the angularMvcSampleApp
  */
 angular.module('angularMvcSampleApp')
-  .factory('DummyRepositoryService', function () {
+  .factory('DummyRepositoryService', function ($q) {
     var getRepositories = function (user) {
       switch (user) {
       case 'GrayBullet':
@@ -32,7 +32,10 @@ angular.module('angularMvcSampleApp')
     var DummyRepositoryService = function () {};
 
     DummyRepositoryService.prototype.fetch = function (user) {
-      return getRepositories(user);
+      var deferred = $q.defer();
+      deferred.resolve(getRepositories(user));
+      return deferred.promise;
+      // return getRepositories(user);
     };
 
     return DummyRepositoryService;
@@ -44,7 +47,10 @@ angular.module('angularMvcSampleApp')
       userInput: '',
       repositories: [],
       fetch: function () {
-        this.repositories = repositoryService.fetch(this.userInput);
+        // this.repositories = repositoryService.fetch(this.userInput);
+        var that = this;
+        repositoryService.fetch(this.userInput)
+          .then(function (repositories) { that.repositories = repositories; });
       }
     };
   })
