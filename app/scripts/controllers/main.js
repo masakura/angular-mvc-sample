@@ -39,7 +39,12 @@ angular.module('angularMvcSampleApp')
 
     return library;
   })
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, repositoryLibrary) {
+    var model = $scope.model = repositoryLibrary;
+
+    $scope.fetch = function () { model.fetch(); };
+
+    /*
     $scope.userInput = '';
     $scope.repositories = [];
 
@@ -65,4 +70,5 @@ angular.module('angularMvcSampleApp')
         break;
       }
     };
+     */
   });

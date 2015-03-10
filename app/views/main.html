@@ -1,13 +1,13 @@
 <div>
   <div class="input-group">
-    <input class="form-control" type="text" placeholder="GitHub user or organization..." ng-model="userInput">
+    <input class="form-control" type="text" placeholder="GitHub user or organization..." ng-model="model.userInput">
     <span class="input-group-btn">
       <button class="btn btn-primary" type="button" ng-click="fetch()">Fetch</button>
     </span>
   </div>
 
   <ul class="list-group">
-    <li class="list-group-item" ng-repeat="repository in repositories">
+    <li class="list-group-item" ng-repeat="repository in model.repositories">
       <span class="badge">{{repository.stars}}</span>
       <div>{{repository.name}}</div>
     </li>
