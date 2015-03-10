@@ -43,32 +43,4 @@ angular.module('angularMvcSampleApp')
     var model = $scope.model = repositoryLibrary;
 
     $scope.fetch = function () { model.fetch(); };
-
-    /*
-    $scope.userInput = '';
-    $scope.repositories = [];
-
-    $scope.fetch = function () {
-      switch ($scope.userInput) {
-      case 'GrayBullet':
-        $scope.repositories = [
-          {name: 'generator-graybullet-cordova', stars: 6},
-          {name: 'grunt-cordova-ng', stars: 2},
-          {name: 'testmator', stars: 0}
-        ];
-        break;
-
-      case 'masakura':
-        $scope.repositories = [
-          {name: 'sample0', stars: 1},
-          {name: 'sample1'}
-        ];
-        break;
-
-      default:
-        $scope.repositories = [];
-        break;
-      }
-    };
-     */
   });
