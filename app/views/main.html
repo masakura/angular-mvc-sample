@@ -8,7 +8,8 @@
 
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="repository in repositories">
-      <div>{{repository}}</div>
+      <span class="badge">{{repository.stars}}</span>
+      <div>{{repository.name}}</div>
     </li>
   </ul>
 </div>
