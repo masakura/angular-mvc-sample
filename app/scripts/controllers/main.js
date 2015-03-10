@@ -9,35 +9,32 @@
  */
 angular.module('angularMvcSampleApp')
   .factory('repositoryLibrary', function () {
-    var library = {};
+    return {
+      userInput: '',
+      repositories: [],
+      fetch: function () {
+        switch (this.userInput) {
+        case 'GrayBullet':
+          this.repositories = [
+            {name: 'generator-graybullet-cordova', stars: 6},
+            {name: 'grunt-cordova-ng', stars: 2},
+            {name: 'testmator', stars: 0}
+          ];
+          break;
 
-    library.userInput = '';
-    library.repositories = [];
+        case 'masakura':
+          this.repositories = [
+            {name: 'sample0', stars: 1},
+            {name: 'sample1'}
+          ];
+          break;
 
-    library.fetch = function () {
-      switch (library.userInput) {
-      case 'GrayBullet':
-        library.repositories = [
-          {name: 'generator-graybullet-cordova', stars: 6},
-          {name: 'grunt-cordova-ng', stars: 2},
-          {name: 'testmator', stars: 0}
-        ];
-        break;
-
-      case 'masakura':
-        library.repositories = [
-          {name: 'sample0', stars: 1},
-          {name: 'sample1'}
-        ];
-        break;
-
-      default:
-        library.repositories = [];
-        break;
+        default:
+          this.repositories = [];
+          break;
+        }
       }
     };
-
-    return library;
   })
   .controller('MainCtrl', function ($scope, repositoryLibrary) {
     var model = $scope.model = repositoryLibrary;
