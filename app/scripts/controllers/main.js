@@ -10,8 +10,8 @@
 angular.module('angularMvcSampleApp')
   .controller('MainCtrl', function ($scope) {
     $scope.repositories = [
-      'generator-graybullet-cordova',
-      'grunt-cordova-ng',
-      'testmator'
+      {name: 'generator-graybullet-cordova', stars: 6},
+      {name: 'grunt-cordova-ng', stars: 2},
+      {name: 'testmator', stars: 0}
     ];
   });
