@@ -37,7 +37,9 @@ angular.module('angularMvcSampleApp')
 
     return DummyRepositoryService;
   })
-  .factory('repositoryLibrary', function () {
+  .factory('repositoryLibrary', function (DummyRepositoryService) {
+    var repositoryService = new DummyRepositoryService();
+
     var getRepositories = function (user) {
       switch (user) {
       case 'GrayBullet':
@@ -62,7 +64,8 @@ angular.module('angularMvcSampleApp')
       userInput: '',
       repositories: [],
       fetch: function () {
-        this.repositories = getRepositories(this.userInput);
+        this.repositories = repositoryService.fetch(this.userInput);
+        // this.repositories = getRepositories(this.userInput);
       }
     };
   })
