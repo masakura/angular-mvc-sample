@@ -26,13 +26,29 @@ angular.module('angularMvcSampleApp')
 
     return DirectRepositoryService;
   })
-  .factory('CachedRepositoryService', function () {
+  .factory('CachedRepositoryService', function ($q) {
     var CachedRepositoryService = function (repositoryService) {
       this.service_ = repositoryService;
+      this.store_ = {};
     };
 
     CachedRepositoryService.prototype.fetch = function (user) {
-      return this.service_.fetch(user);
+      var store = this.store_;
+      var repositories = store[user];
+
+      if (repositories) {
+        console.log('Cache Hit!');
+
+        var deferred = $q.defer();
+        deferred.resolve(repositories);
+        return deferred.promise;
+      }
+
+      return this.service_.fetch(user)
+        .then(function (repositories) {
+          store[user] = repositories;
+          return repositories;
+        });
     };
 
     return CachedRepositoryService;
